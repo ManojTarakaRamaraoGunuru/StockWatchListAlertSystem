@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.util.Base64;
+import java.util.List;
 import java.util.regex.Pattern;
 
 @Service
@@ -85,4 +86,7 @@ public class UserService {
         }
     }
 
+        public List<User> getAllUsers(){
+            return userRepository.findAll();
+        }
 }
