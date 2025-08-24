@@ -1,7 +1,5 @@
 package org.example.users.controller;
 
-import jakarta.persistence.Embedded;
-import jakarta.persistence.EmbeddedId;
 import org.example.users.entity.User;
 import org.example.users.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,7 +18,7 @@ public class AdminView {
     public UserService userService;
 
     @GetMapping
-    public ResponseEntity<List<User>> getAllUsers(){
+    public ResponseEntity<List<User>> getAllUsers() {
 
         return ResponseEntity.ok(userService.getAllUsers());
     }

@@ -56,6 +56,7 @@ public class UserService {
 
     public User signUp(User user) {
         this.validateSignup(user);
+        user.setStatus(true);
         user.setPassword(UserService.hashPassword(user.getPassword()));
         return userRepository.save(user);
     }

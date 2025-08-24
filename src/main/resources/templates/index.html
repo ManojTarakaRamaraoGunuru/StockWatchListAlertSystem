@@ -1,10 +1,23 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
-    <title>Hello World</title>
+  <meta charset="UTF-8">
+  <title>StockWatchlist Notification</title>
+  <link rel="stylesheet" th:href="@{/css/style.css}">
+  <script defer th:src="@{/js/index.js}"></script>
 </head>
 <body>
-<h1 th:text="${message}">Placeholder</h1>
-<h1 th:text="${message1}">Placeholder</h1>
+<nav class="navbar">
+  <div class="logo">StockWatchlist</div>
+  <ul class="nav-links">
+    <li><a th:href="@{/signup}">Sign Up</a></li>
+    <li><a th:href="@{/signin}">Sign In</a></li>
+  </ul>
+</nav>
+
+<main class="content">
+  <h1>Welcome to StockWatchlist Notification</h1>
+  <p>Track your favorite stocks and get notified instantly 🚀</p>
+</main>
 </body>
 </html>
