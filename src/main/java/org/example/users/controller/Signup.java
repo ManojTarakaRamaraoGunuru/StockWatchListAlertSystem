@@ -10,7 +10,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("/users")
 public class Signup {
 
     @Autowired
@@ -20,11 +19,5 @@ public class Signup {
     public ResponseEntity<User> addUser(@RequestBody User user) {
         User savedUser = userService.signUp(user);
         return ResponseEntity.ok(savedUser);
-    }
-
-    @PostMapping("/signin")
-    public ResponseEntity<User> validateUSer(@RequestBody User user) {
-        User validUser = userService.signIn(user);
-        return ResponseEntity.ok(validUser);
     }
 }

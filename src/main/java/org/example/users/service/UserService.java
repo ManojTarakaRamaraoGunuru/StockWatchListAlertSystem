@@ -3,11 +3,9 @@ package org.example.users.service;
 import org.example.users.entity.User;
 import org.example.users.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
-import java.security.MessageDigest;
-import java.security.NoSuchAlgorithmException;
-import java.util.Base64;
 import java.util.List;
 import java.util.regex.Pattern;
 
@@ -16,6 +14,9 @@ public class UserService {
 
     @Autowired
     private UserRepository userRepository;
+
+    @Autowired
+    private PasswordEncoder passwordEncoder;
 
     public static boolean validatePassword(String passwd) {
         String password_regex = "^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)(?=.*[@$!%*#?&])[A-Za-z\\d@$!%*#?&]{8,20}$";
@@ -32,21 +33,6 @@ public class UserService {
         return pattern.matcher(email).matches();
     }
 
-    public static String hashPassword(String password) {
-        if (password == null) {
-            throw new IllegalArgumentException("Password cannot be null");
-        }
-
-        MessageDigest digest = null;
-        try {
-            digest = MessageDigest.getInstance("SHA-256");
-        } catch (NoSuchAlgorithmException e) {
-            throw new RuntimeException(e);
-        }
-        byte[] hashBytes = digest.digest(password.getBytes());
-        return Base64.getEncoder().encodeToString(hashBytes);
-    }
-
     public static boolean validate(String data, String regex) {
         if (data == null || regex == null) {
             return false;
@@ -57,21 +43,10 @@ public class UserService {
     public User signUp(User user) {
         this.validateSignup(user);
         user.setStatus(true);
-        user.setPassword(UserService.hashPassword(user.getPassword()));
+        user.setPassword(passwordEncoder.encode(user.getPassword()));
         return userRepository.save(user);
     }
 
-    public User signIn(User user) {
-        User existedUser = userRepository.findByUsername(user.getUsername());
-        if (existedUser == null) {
-            throw new RuntimeException("User does not exists");
-        }
-
-        if (!UserService.hashPassword(user.getPassword()).equals(existedUser.getPassword())) {
-            throw new IllegalArgumentException("Password is incorrect");
-        }
-        return existedUser;
-    }
 
     public void validateSignup(User user) {
         if (userRepository.findByUsername(user.getUsername()) != null) {
@@ -87,7 +62,7 @@ public class UserService {
         }
     }
 
-        public List<User> getAllUsers(){
+    public List<User> getAllUsers() {
             return userRepository.findAll();
         }
 }

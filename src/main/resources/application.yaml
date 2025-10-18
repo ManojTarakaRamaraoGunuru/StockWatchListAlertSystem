@@ -22,3 +22,16 @@ spring:
   mvc:
     trailing-slash:
       match: true
+
+  thymeleaf:
+    cache: false
+  web:
+    resources:
+      cache:
+        period: 0
+  devtools:
+    restart:
+      enabled: true
+      exclude: static/**,public/**
+    livereload:
+      enabled: true

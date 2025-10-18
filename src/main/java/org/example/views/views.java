@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 @Controller
 public class views {
 
-    @GetMapping("/")
+    @GetMapping("/dashboard")
     public String RenderIndex(){
         return "index";
     }
@@ -21,9 +21,9 @@ public class views {
         return "signup"; // resolves templates/signup.html
     }
 
-    @GetMapping("/signin")
-    public String showSigninPage() {
-        return "signin"; // resolves templates/signin.html
+    @GetMapping("/login")
+    public String showLoginPage() {
+        return "login"; // resolves templates/login.html
     }
 
     @GetMapping("/homepage")
