@@ -1,7 +1,7 @@
-package org.example.users.controller;
+package org.example.views;
 
-import org.example.users.entity.User;
-import org.example.users.service.UserService;
+import org.example.users.User;
+import org.example.users.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;

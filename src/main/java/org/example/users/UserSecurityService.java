@@ -1,12 +1,13 @@
-package org.example.users.service;
+package org.example.users;
 
-import org.example.users.entity.User;
-import org.example.users.repository.UserRepository;
+import org.example.constants.Roles;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
+
+import java.util.Arrays;
 
 @Service
 public class UserSecurityService implements UserDetailsService {
@@ -21,11 +22,12 @@ public class UserSecurityService implements UserDetailsService {
 
         if(user == null)throw new UsernameNotFoundException("User Not Found: " + username);
 
-        UserDetails userDetails = org.springframework.security.core.userdetails.User.builder()
+        String[] roles = user.getRoles().stream().map(Enum :: name).toArray(String[] :: new);
+
+        return org.springframework.security.core.userdetails.User.builder()
                 .username(user.getUsername())
                 .password(user.getPassword())
-                .roles("USER")
+                .roles(roles)
                 .build();
-        return userDetails;
     }
 }

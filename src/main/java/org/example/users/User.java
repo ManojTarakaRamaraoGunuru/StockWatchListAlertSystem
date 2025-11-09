@@ -1,12 +1,14 @@
-package org.example.users.entity;
+package org.example.users;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.example.constants.Roles;
 
 import java.sql.Timestamp;
+import java.util.HashSet;
 import java.util.Set;
 
 @Entity
@@ -14,6 +16,7 @@ import java.util.Set;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
+@Builder
 public class User {
 
     @Id
@@ -35,9 +38,11 @@ public class User {
     @Column(name = "created_at", insertable = false, updatable = false)
     private Timestamp createdAt;
 
-    // Optional: bidirectional mapping
-    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-    private Set<UserRole> userRoles;
+    @Column(columnDefinition = "JSON")
+    @Convert(converter = RoleSetConverter.class)
+    @Builder.Default
+    private Set<Roles> roles = new HashSet<>();
+
 
     @Override
     public String toString() {

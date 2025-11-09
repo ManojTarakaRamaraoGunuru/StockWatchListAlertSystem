@@ -1,6 +1,7 @@
 package org.example.configs;
 
-import org.example.users.service.UserSecurityService;
+import org.example.constants.Roles;
+import org.example.users.UserSecurityService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -27,7 +28,8 @@ public class securityConfig {
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
         http
                 .authorizeHttpRequests((authorize) -> authorize
-                        .requestMatchers("/public/**", "/homepage", "/signup", "/login", "/css/**", "/js/**").permitAll()
+                        .requestMatchers("/public/**", "/signup", "/login").permitAll()
+                        .requestMatchers("/admin").hasRole(Roles.ADMIN.getRole())
                         .anyRequest().authenticated()
                 )
                 .formLogin(form -> form
@@ -35,8 +37,8 @@ public class securityConfig {
                         .loginProcessingUrl("/signin")  // Spring handles authentication
                         .usernameParameter("username")
                         .passwordParameter("password")
-                        .defaultSuccessUrl("/dashboard", true)  // Add this
-                        .failureUrl("/login?error=true")        // Add this
+                        .defaultSuccessUrl("/dashboard", true)  // redirection url on success
+                        .failureUrl("/login?error=true")        // redirection url on failure
                         .permitAll())
                 .csrf(csrf -> csrf.disable());
 

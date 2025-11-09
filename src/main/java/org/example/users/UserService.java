@@ -1,12 +1,12 @@
-package org.example.users.service;
+package org.example.users;
 
-import org.example.users.entity.User;
-import org.example.users.repository.UserRepository;
+import org.example.constants.Roles;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Set;
 import java.util.regex.Pattern;
 
 @Service
@@ -44,6 +44,7 @@ public class UserService {
         this.validateSignup(user);
         user.setStatus(true);
         user.setPassword(passwordEncoder.encode(user.getPassword()));
+        user.setRoles(Set.of(Roles.USER));
         return userRepository.save(user);
     }
 
