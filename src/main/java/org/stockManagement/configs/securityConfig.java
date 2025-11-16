@@ -1,7 +1,7 @@
-package org.example.configs;
+package org.stockManagement.configs;
 
-import org.example.constants.Roles;
-import org.example.users.UserSecurityService;
+import org.stockManagement.constants.Roles;
+import org.stockManagement.users.UserSecurityService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

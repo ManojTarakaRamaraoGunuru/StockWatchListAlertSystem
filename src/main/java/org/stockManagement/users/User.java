@@ -1,11 +1,11 @@
-package org.example.users;
+package org.stockManagement.users;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import org.example.constants.Roles;
+import org.stockManagement.constants.Roles;
 
 import java.sql.Timestamp;
 import java.util.HashSet;

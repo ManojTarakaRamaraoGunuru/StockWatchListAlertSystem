@@ -1,7 +1,9 @@
-package org.example.views;
+package org.stockManagement.views;
 
-import org.example.users.User;
-import org.example.users.UserService;
+import groovy.util.logging.Slf4j;
+import org.springframework.http.HttpStatus;
+import org.stockManagement.users.User;
+import org.stockManagement.users.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -10,8 +12,10 @@ import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
 
+@lombok.extern.slf4j.Slf4j
 @RestController
 @RequestMapping("/admin")
+@Slf4j
 public class AdminView {
 
     @Autowired
@@ -19,7 +23,7 @@ public class AdminView {
 
     @GetMapping
     public ResponseEntity<List<User>> getAllUsers() {
-
-        return ResponseEntity.ok(userService.getAllUsers());
+        log.info("All users fetched");
+        return new ResponseEntity<>(userService.getAllUsers(), HttpStatus.OK);
     }
 }

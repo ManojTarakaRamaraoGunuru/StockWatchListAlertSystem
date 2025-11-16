@@ -1,4 +1,4 @@
-package org.example.constants;
+package org.stockManagement.constants;
 
 public enum Roles {
     ADMIN,

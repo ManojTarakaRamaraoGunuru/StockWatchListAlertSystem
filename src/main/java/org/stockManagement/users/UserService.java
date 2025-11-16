@@ -1,6 +1,6 @@
-package org.example.users;
+package org.stockManagement.users;
 
-import org.example.constants.Roles;
+import org.stockManagement.constants.Roles;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;

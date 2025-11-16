@@ -1,13 +1,10 @@
-package org.example.users;
+package org.stockManagement.users;
 
-import org.example.constants.Roles;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
-
-import java.util.Arrays;
 
 @Service
 public class UserSecurityService implements UserDetailsService {

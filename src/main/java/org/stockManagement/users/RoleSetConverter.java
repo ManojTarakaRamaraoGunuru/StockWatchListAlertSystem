@@ -1,11 +1,11 @@
-package org.example.users;
+package org.stockManagement.users;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import jakarta.persistence.AttributeConverter;
 import jakarta.persistence.Converter;
-import org.example.constants.Roles;
+import org.stockManagement.constants.Roles;
 import java.util.Set;
 
 @Converter

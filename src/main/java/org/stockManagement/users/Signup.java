@@ -1,4 +1,4 @@
-package org.example.users;
+package org.stockManagement.users;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
