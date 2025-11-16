@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Login - StockWatchlist</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+<body>
+<nav class="navbar">
+    <div class="logo">StockWatchlist</div>
+    <ul class="nav-links">
+        <li><a th:href="@{/}">Home</a></li>
+        <li><a th:href="@{/signup}">Sign Up</a></li>
+    </ul>
+</nav>
+
+<main class="content">
+    <h2>Sign In</h2>
+
+    <!-- Show error message if login failed -->
+    <div th:if="${param.error}" style="color: red; margin-bottom: 15px;">
+        Invalid username or password!
+    </div>
+
+
+    <!-- Login Form - CRITICAL: action="/signin" method="post" -->
+    <form action="/signin" method="post">
+        <label for="username">Username:</label>
+        <input type="text" id="username" name="username" required><br>
+
+        <label for="password">Password:</label>
+        <input type="password" id="password" name="password" required><br>
+
+        <button type="submit">Sign In</button>
+    </form>
+
+    <p>Don't have an account? <a th:href="@{/signup}">Sign up here</a></p>
+</main>
+</body>
+</html>

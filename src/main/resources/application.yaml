@@ -1,0 +1,37 @@
+server:
+  port: 8000
+
+spring:
+  datasource:
+    url: ${DB_URL}
+    username: ${DB_USERNAME}
+    password: ${DB_PASSWORD}
+    driver-class-name: com.mysql.cj.jdbc.Driver
+
+  jpa:
+    hibernate:
+      ddl-auto: none   # Don't let Hibernate auto-create tables, we want to use our SQL script
+    show-sql: true     # (Optional) log queries for debugging
+    database-platform: org.hibernate.dialect.MySQL8Dialect
+
+  sql:
+    init:
+      mode: always          # Always run SQL scripts at startup
+      schema-locations: classpath:scripts/schema.sql  # reads only schema.sql and data.sql at specified location
+
+  mvc:
+    trailing-slash:
+      match: true
+
+  thymeleaf:
+    cache: false
+  web:
+    resources:
+      cache:
+        period: 0
+  devtools:
+    restart:
+      enabled: true
+      exclude: static/**,public/**
+    livereload:
+      enabled: true

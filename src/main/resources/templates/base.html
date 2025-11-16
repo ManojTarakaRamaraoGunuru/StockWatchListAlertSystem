@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+<head>
+  <meta charset="UTF-8">
+  <title>Stock Watchlist App</title>
+  <link rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+<body>
+<header>
+  <nav>
+    <a th:href="@{/}">Home</a> |
+    <a th:href="@{/users/signup}">Signup</a> |
+    <a th:href="@{/admin}">Admin</a>
+  </nav>
+</header>
+
+<main>
+  <div layout:fragment="content">
+    <!-- child pages will inject here -->
+  </div>
+</main>
+
+<footer>
+  <p>&copy; 2025 Stock Watchlist</p>
+</footer>
+
+<script th:src="@{/js/main.js}"></script>
+</body>
+</html>

@@ -1,0 +1,34 @@
+# IntelliJ IDEA
+.idea/
+*.iml
+*.iws
+*.ipr
+.idea/**/workspace.xml
+.idea/**/tasks.xml
+.idea/**/usage.statistics.xml
+.idea/**/dictionaries
+.idea/**/shelf
+.idea/**/encodings.xml        # your specific case
+
+# Maven / Gradle build outputs
+target/
+out/
+build/
+
+# Logs
+*.log
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Environment / secret files
+.env
+*.keystore
+*.jks
+*.p12
+
+# Temporary files
+*.tmp
+*.swp
+
