@@ -18,6 +18,7 @@
 
     <properties>
         <java.version>21</java.version>
+        <sonar.organization>gladiator</sonar.organization>
     </properties>
 
     <dependencies>
