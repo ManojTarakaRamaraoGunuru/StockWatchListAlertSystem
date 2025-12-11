@@ -35,3 +35,7 @@ spring:
       exclude: static/**,public/**
     livereload:
       enabled: true
+
+external:
+  api-key:
+    alpha-vantage: ${ALPHA_VANTAGE_API}

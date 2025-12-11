@@ -10,3 +10,15 @@ CREATE TABLE IF NOT EXISTS users (
     status TINYINT DEFAULT 1,
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
+
+--2. OHLC table
+CREATE TABLE IF NOT EXISTS ohlc(
+    id BINARY(16) PRIMARY KEY,
+    sym VARCHAR(10) NOT NULL,
+    open FLOAT,
+    high FLOAT,
+    low FLOAT,
+    close FLOAT,
+    volume FLOAT,
+    time_stamp VARCHAR(20)
+);
