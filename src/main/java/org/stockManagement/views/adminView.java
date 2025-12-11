@@ -16,7 +16,7 @@ import java.util.List;
 @RestController
 @RequestMapping("/admin")
 @Slf4j
-public class AdminView {
+public class adminView {
 
     @Autowired
     public UserService userService;
