@@ -1,0 +1,40 @@
+.PHONY: help run build clean test
+
+# Load environment variables from .env file
+ifneq (,$(wildcard .env))
+    include .env
+    export $(shell sed 's/=.*//' .env)
+endif
+
+help:
+	@echo "Available commands:"
+	@echo "  make run     - Run the application"
+	@echo "  make build   - Build the project"
+	@echo "  make clean   - Clean target directory"
+	@echo "  make test    - Run tests"
+	@echo "  make package - Create JAR file"
+
+run:
+	@echo "Starting application..."
+	@"./mvnw" spring-boot:run
+
+build:
+	@echo "Building project..."
+	@"./mvnw" clean compile
+
+clean:
+	@echo "Cleaning..."
+	@"./mvnw" clean
+
+test:
+	@echo "Running tests..."
+	@"./mvnw" test
+
+package:
+	@echo "Packaging..."
+	@"./mvnw" clean package
+
+# Shortcuts
+up: run
+start: run
+compile: build
