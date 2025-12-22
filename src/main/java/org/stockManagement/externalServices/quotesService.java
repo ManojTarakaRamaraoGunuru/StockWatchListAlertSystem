@@ -19,7 +19,7 @@ import java.util.List;
 @Slf4j
 @Service
 public class quotesService {
-    private final String url = "https://www.alphavantage.co/query?function=TIME_SERIES_INTRADAY";
+    private final String url = "https://www.alphavantage.co/query?function=TIME_SERIES_DAILY";
 
     @Autowired
     private quotesRepository quotesRepository;
@@ -28,7 +28,7 @@ public class quotesService {
     private String apiKey;
 
     public void getQuotes(String sym, String interval) {
-        String temp1 = String.format("&symbol=%s&interval=%s&apikey=%s", sym, interval, apiKey);
+        String temp1 = String.format("&symbol=%s&apikey=%s", sym, apiKey);
         String finalUrl = url + temp1;
         log.info("Hitting url: {}", finalUrl);
         RestTemplate template = new RestTemplate();

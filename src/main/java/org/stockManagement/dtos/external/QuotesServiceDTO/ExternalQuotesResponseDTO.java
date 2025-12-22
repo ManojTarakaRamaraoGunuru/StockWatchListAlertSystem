@@ -30,6 +30,6 @@ public class ExternalQuotesResponseDTO {
     @JsonProperty("Meta Data")
     private Object metaData;
 
-    @JsonProperty("Time Series (5min)")
+    @JsonProperty("Time Series (Daily)")
     private HashMap<String, OHLCdata> timeSeries;
 }
